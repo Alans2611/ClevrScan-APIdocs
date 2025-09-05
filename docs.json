@@ -1,13 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "ClevrScan",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#4285F4",
+    "light": "#F5F9FF",
+    "dark": "#0B1C2C"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon_new.svg",
   "navigation": {
     "tabs": [
       {
@@ -89,8 +89,9 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/lightmodelogo.svg",
+    "dark": "/logo/darkmodelogo.svg",
+    "height": 54
   },
   "navbar": {
     "links": [
@@ -107,15 +108,15 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
