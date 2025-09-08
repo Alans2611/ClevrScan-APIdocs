@@ -1,0 +1,55 @@
+---
+title: "Detect Document"
+api: "POST https://api.clevrscan.com/api/sync/detect_document"
+description: "Uploads a document for synchronous detection and classification. Returns detection results immediately (blocking request)."
+authMethod: key
+---
+
+### Request Format
+
+**Option 1:Multipart Form Data**
+
+```http
+POST /api/sync/detect_document
+Content-Type: multipart/form-data
+x-api-key: <api_key>
+
+file: <binary file>
+```
+
+### Parameters
+
+| Parameter | Type   | Required | Location | Description                                |
+| --------- | ------ | -------- | -------- | ------------------------------------------ |
+| file      | File   | Yes      | Body     | Document file (PDF, image, etc.) to detect |
+| api\_key  | String | Yes      | Header   |  API key                     |
+
+
+<RequestExample>
+```bash cURL
+curl 'https://api.clevrscan.com/api/sync/detect_document' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en-US,en;q=0.9,hi;q=0.8' \
+  -H 'x-api-key: <api_key>' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryygyQkKnWvryUHlF7' \
+  -H 'Origin: https://dashboard.clevrscan.com' \
+  -H 'Referer: https://dashboard.clevrscan.com/' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw $'------WebKitFormBoundaryygyQkKnWvryUHlF7\r\nContent-Disposition: form-data; name="file"; filename="invoice.pdf"\r\nContent-Type: application/pdf\r\n\r\n\r\n------WebKitFormBoundaryygyQkKnWvryUHlF7--\r\n'
+  ```
+  </RequestExample>
+
+<ResponseExample>
+```json Sample Response
+{
+    "result": "```json\n{\n  \"type\": \"Invoice\",\n  \"fields\": [\n    \"Company Name\",\n    \"Company Address\",\n    \"Bill To\",\n    \"Ship To\",\n    \"Invoice Number\",\n    \"Invoice Date\",\n    \"P.O. Number\",\n    \"Due Date\",\n    \"Invoice Total\",\n    \"Quantity\",\n    \"Description\",\n    \"Unit Price\",\n    \"Amount\",\n    \"Subtotal\",\n    \"GST\",\n    \"Terms & Conditions\",\n    \"Payment Due Date\",\n    \"Bank Name\",\n    \"Account Number\",\n    \"Routing Number\"\n  ]\n}\n```"
+}
+```
+</ResponseExample>

@@ -15,43 +15,6 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
             "group": "API documentation",
             "pages": [
               "api-reference/introduction"
@@ -60,54 +23,42 @@
           {
             "group": "Endpoints",
             "pages": [
-              "api-reference/endpoint/async_method",
-              "api-reference/endpoint/status_checking",
-              "api-reference/endpoint/sync_method",
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              {
+                "group": "Upload Endpoints",
+                "pages": [
+                  "api-reference/endpoint/async_method",
+                  "api-reference/endpoint/status_checking",
+                  "api-reference/endpoint/sync_method"
+                ]
+              },
+              {
+                "group": "Template Endpoints",
+                "pages": [
+                  "api-reference/endpoint/list_templates",
+                  "api-reference/endpoint/detect_document",
+                  "api-reference/endpoint/create_template",
+                  "api-reference/endpoint/delete_template"
+                ]
+              },
+              {
+                "group": "Document History Endpoints",
+                "pages": [
+                  "api-reference/endpoint/get_document_history",
+                  "api-reference/endpoint/get_presignedurls",
+                  "api-reference/endpoint/update_document_history",
+                  "api-reference/endpoint/delete_document_history",
+                  "api-reference/endpoint/get_document_history_search"
+                ]
+              }
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/lightmodelogo.svg",
     "dark": "/logo/darkmodelogo.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
   },
   "contextual": {
     "options": [

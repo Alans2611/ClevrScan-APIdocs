@@ -1,0 +1,65 @@
+---
+title: "Create Template"
+api: "POST https://api.clevrscan.com/api/templates"
+description: "Uploads a new document template definition with fields and processing instructions. Returns the created template metadata."
+authMethod: key
+---
+
+### Request Format
+
+**Option 1:Multipart Form Data**
+
+```http
+POST /api/templates
+Content-Type: multipart/form-data
+x-api-key: <api_key>
+
+file: <binary file>
+name: <template name>
+description: <template description>
+extractFields: ["field1", "field2", ...]
+instructions: <optional custom instructions>
+```
+
+### Parameters
+
+| Parameter     | Type      | Required | Location | Description                                                                |
+| ------------- | --------- | -------- | -------- | -------------------------------------------------------------------------- |
+| file          | File      | Yes      | Body     | Document file (sample PDF/image) used to define the template               |
+| name          | String    | Yes      | Body     | Template name (e.g., `"General"`)                                          |
+| description   | String    | Yes      | Body     | Short description of the template (e.g., `"Invoice"`)                      |
+| extractFields | String\[] | Yes      | Body     | List of fields to extract (e.g., company name, invoice total, due date, …) |
+| instructions  | String    | No       | Body     | Additional processing instructions (custom rules or extraction logic)      |
+| api\_key      | String    | Yes      | Header   | API key                                                     |
+
+<Note>extractFields must be passed as a JSON array string.</Note>
+
+<RequestExample>
+```bash cURL
+curl 'https://api.clevrscan.com/api/templates' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en-US,en;q=0.9,hi;q=0.8' \
+  -H 'x-api-key: <api_key>' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryx8XSGECPgxNIf4mi' \
+  -H 'Origin: https://dashboard.clevrscan.com' \
+  -H 'Referer: https://dashboard.clevrscan.com/' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw $'------WebKitFormBoundaryx8XSGECPgxNIf4mi\r\nContent-Disposition: form-data; name="file"; filename="invoice.pdf"\r\nContent-Type: application/pdf\r\n\r\n\r\n------WebKitFormBoundaryx8XSGECPgxNIf4mi\r\nContent-Disposition: form-data; name="name"\r\n\r\nGeneral\r\n------WebKitFormBoundaryx8XSGECPgxNIf4mi\r\nContent-Disposition: form-data; name="description"\r\n\r\nInvoice\r\n------WebKitFormBoundaryx8XSGECPgxNIf4mi\r\nContent-Disposition: form-data; name="extractFields"\r\n\r\n["Company Name","Company Address","Bill To","Ship To","Invoice Number","Invoice Date","P.O. Number","Due Date","Invoice Total","Quantity","Description","Unit Price","Amount","Subtotal","GST","Terms & Conditions","Payment Due Date","Bank Name","Account Number","Routing Number"]\r\n------WebKitFormBoundaryx8XSGECPgxNIf4mi\r\nContent-Disposition: form-data; name="instructions"\r\n\r\n\r\n------WebKitFormBoundaryx8XSGECPgxNIf4mi--\r\n'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Sample Response
+{
+  "message": "Template created successfully",
+  "template_id": 396
+}
+```
+</ResponseExample>

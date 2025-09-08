@@ -1,0 +1,72 @@
+---
+title: "Get Document History"
+api: "GET https://api.clevrscan.com/api/document_history"
+description: "Fetches the history of uploaded and processed documents with pagination support."
+authMethod: key
+---
+
+### Request Format
+
+**HTTP Request**
+
+```http
+GET /api/document_history?page={page}&limit={limit}
+x-api-key: <api_key>
+```
+
+### Parameters
+
+| Parameter | Type   | Required | Default | Description                               |
+| --------- | ------ | -------- | ------- | ----------------------------------------- |
+| page      | Number | No       | 1       | Page number of results to retrieve        |
+| limit     | Number | No       | 15      | Number of results per page                |
+
+<RequestExample>
+```bash cURL
+curl 'https://api.clevrscan.com/api/document_history?page=1&limit=15' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en-US,en;q=0.9,hi;q=0.8' \
+  -H 'x-api-key: <api_key>' \
+  -H 'Connection: keep-alive' \
+  -H 'Origin: https://dashboard.clevrscan.com' \
+  -H 'Referer: https://dashboard.clevrscan.com/' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Sample Response
+{
+    "history": [
+        {
+            "date": "2025-09-05",
+            "file_type": "image",
+            "gpt_result": "{\"sync\": false, \"company_id\": \"72\", \"MasterID\": \"72_07ATFPS1363Q1Z2_98_10-06-2025\", \"Action\": \"Create\", \"VoucherNumber\": \"98\", \"VoucherDate\": \"20250610\", \"Reference\": \"98\", \"ReferenceDate\": \"20250610\", \"PartyName\": \"ANAND MOTOR STORE\", \"VoucherType\": \"Purchase\", \"DeliveryNoteNo\": \"\", \"Voucher_Total\": 532156.0, \"DeliveryNoteDate\": \"\", \"DispatchDocNo\": \"731535384784\", \"DispatchThrough\": \"\", \"Destination\": \"\", \"CarrierName\": \"\", \"LRNo\": \"\", \"LRDate\": \"\", \"MotorVehicleNo\": \"DL01LAD7884\", \"OrderNo\": \"\", \"OrderDate\": \"\", \"TermsOfPayment\": \"\", \"OtherReferences\": \"\", \"TermsOfDelivery\": \"\", \"PlaceOfSupply\": \"Delhi\", \"IsInvoice\": \"Yes\", \"IsDeleted\": \"No\", \"BuyerName\": \"ANAND MOTOR STORE\", \"BuyerAlias\": \"\", \"BuyerGSTIN\": \"07ATFPS1363Q1Z2\", \"BuyerPinCode\": \"\", \"BuyerState\": \"Delhi\", \"BuyerCountryName\": \"India\", \"BuyerGSTRegistrationType\": \"Regular\", \"BuyerEmail\": \"anandmotorstore1974@gmail.com\", \"BuyerMobile\": \"9811252173\", \"BuyerTallyGroup\": \"$$GroupSundryCreditors\", \"ConsigneeName\": \"\", \"ConsigneeGSTIN\": \"07AAFCG3149J1ZI\", \"ConsigneeTallyGroup\": \"$$GroupSundryCreditors\", \"ConsigneePinCode\": \"\", \"ConsigneeState\": \"Delhi\", \"ConsigneeCountryName\": \"India\", \"EWayBillDetails\": [{\"EWayBillNo\": \"731535384784\", \"EWayBillDate\": \"\", \"Distance\": null, \"TransporterName\": null, \"TransporterID\": null, \"DocNo\": null, \"DocDate\": null, \"VehicleNo\": \"DL01LAD7884\", \"VehicleType\": \"\"}], \"EInvoiceDetails\": [{\"AckNo\": \"172517671256716\", \"AckDate\": \"20250610\", \"IRN\": \"cdc97cde807aa886b50ea4e3020b55fe949b6a82e-0f9b17fd44f96d144692a16\", \"BillToPlace\": \"\", \"ShipToPlace\": \"\"}], \"VoucherCostCentre\": \"\", \"ConsigneeGSTRegistrationType\": \"Regular\", \"Narration\": \"\", \"BuyerAddress\": [{\"BuyerAddress\": \"W-123, MAYAPURI, PHASE-2, NEW DELHI-110064\"}], \"ConsigneeAddress\": [{\"ConsigneeAddress\": \"GROUND FLOOR, A-81, G.T. KARNAL ROAD, INDUSTRIAL AREA, North West Delhi, Delhi, 110033\"}], \"InventoryEntries\": [{\"StockItemName\": \"TURBO\", \"ItemCode\": \"\", \"GroupName\": \"\", \"HSNCode\": \"84149090\", \"Unit\": \"PCS\", \"IGSTRate\": 18.0, \"CessRate\": 0, \"IsDeemedPositive\": \"Yes\", \"ActualQty\": 11.0, \"BilledQty\": 11.0, \"Rate\": 12260.0, \"DiscountPercent\": 0.0, \"Amount\": 134860.0, \"SalesLedger\": \"Purchase IGST\", \"GodownName\": \"Main Location\", \"BatchName\": \"\", \"MRP\": 0.0, \"BatchAllocations\": [{\"BatchName\": \"Primary Batch\", \"ExpiryDate\": \"\", \"GodownName\": \"Main Location\", \"ActualQty\": 11.0, \"BilledQty\": 11.0, \"Rate\": 12260.0, \"DiscountPercent\": 0.0, \"Amount\": 134860.0}], \"AccountingAllocations\": [{\"LedgerName\": \"Purchase IGST\", \"LedgerGroup\": \"$$GroupPurchase\", \"GSTClassification\": \"Not Applicable\", \"IGSTRate\": 18.0, \"Amount\": 134860.0}]}, {\"StockItemName\": \"TURBO\", \"ItemCode\": \"\", \"GroupName\": \"\", \"HSNCode\": \"84149090\", \"Unit\": \"PCS\", \"IGSTRate\": 18.0, \"CessRate\": 0, \"IsDeemedPositive\": \"Yes\", \"ActualQty\": 16.0, \"BilledQty\": 16.0, \"Rate\": 9980.0, \"DiscountPercent\": 0.0, \"Amount\": 159680.0, \"SalesLedger\": \"Purchase IGST\", \"GodownName\": \"Main Location\", \"BatchName\": \"\", \"MRP\": 0.0, \"BatchAllocations\": [{\"BatchName\": \"Primary Batch\", \"ExpiryDate\": \"\", \"GodownName\": \"Main Location\", \"ActualQty\": 16.0, \"BilledQty\": 16.0, \"Rate\": 9980.0, \"DiscountPercent\": 0.0, \"Amount\": 159680.0}], \"AccountingAllocations\": [{\"LedgerName\": \"Purchase IGST\", \"LedgerGroup\": \"$$GroupPurchase\", \"GSTClassification\": \"Not Applicable\", \"IGSTRate\": 18.0, \"Amount\": 159680.0}]}, {\"StockItemName\": \"TURBO\", \"ItemCode\": \"\", \"GroupName\": \"\", \"HSNCode\": \"84149090\", \"Unit\": \"PCS\", \"IGSTRate\": 18.0, \"CessRate\": 0, \"IsDeemedPositive\": \"Yes\", \"ActualQty\": 10.0, \"BilledQty\": 10.0, \"Rate\": 7430.0, \"DiscountPercent\": 0.0, \"Amount\": 74300.0, \"SalesLedger\": \"Purchase IGST\", \"GodownName\": \"Main Location\", \"BatchName\": \"\", \"MRP\": 0.0, \"BatchAllocations\": [{\"BatchName\": \"Primary Batch\", \"ExpiryDate\": \"\", \"GodownName\": \"Main Location\", \"ActualQty\": 10.0, \"BilledQty\": 10.0, \"Rate\": 7430.0, \"DiscountPercent\": 0.0, \"Amount\": 74300.0}], \"AccountingAllocations\": [{\"LedgerName\": \"Purchase IGST\", \"LedgerGroup\": \"$$GroupPurchase\", \"GSTClassification\": \"Not Applicable\", \"IGSTRate\": 18.0, \"Amount\": 74300.0}]}, {\"StockItemName\": \"TURBO\", \"ItemCode\": \"\", \"GroupName\": \"\", \"HSNCode\": \"84149090\", \"Unit\": \"PCS\", \"IGSTRate\": 18.0, \"CessRate\": 0, \"IsDeemedPositive\": \"Yes\", \"ActualQty\": 12.0, \"BilledQty\": 12.0, \"Rate\": 4850.0, \"DiscountPercent\": 0.0, \"Amount\": 58200.0, \"SalesLedger\": \"Purchase IGST\", \"GodownName\": \"Main Location\", \"BatchName\": \"\", \"MRP\": 0.0, \"BatchAllocations\": [{\"BatchName\": \"Primary Batch\", \"ExpiryDate\": \"\", \"GodownName\": \"Main Location\", \"ActualQty\": 12.0, \"BilledQty\": 12.0, \"Rate\": 4850.0, \"DiscountPercent\": 0.0, \"Amount\": 58200.0}], \"AccountingAllocations\": [{\"LedgerName\": \"Purchase IGST\", \"LedgerGroup\": \"$$GroupPurchase\", \"GSTClassification\": \"Not Applicable\", \"IGSTRate\": 18.0, \"Amount\": 58200.0}]}, {\"StockItemName\": \"TURBO\", \"ItemCode\": \"\", \"GroupName\": \"\", \"HSNCode\": \"84149090\", \"Unit\": \"PCS\", \"IGSTRate\": 18.0, \"CessRate\": 0, \"IsDeemedPositive\": \"Yes\", \"ActualQty\": 7.0, \"BilledQty\": 7.0, \"Rate\": 3420.0, \"DiscountPercent\": 0.0, \"Amount\": 23940.0, \"SalesLedger\": \"Purchase IGST\", \"GodownName\": \"Main Location\", \"BatchName\": \"\", \"MRP\": 0.0, \"BatchAllocations\": [{\"BatchName\": \"Primary Batch\", \"ExpiryDate\": \"\", \"GodownName\": \"Main Location\", \"ActualQty\": 7.0, \"BilledQty\": 7.0, \"Rate\": 3420.0, \"DiscountPercent\": 0.0, \"Amount\": 23940.0}], \"AccountingAllocations\": [{\"LedgerName\": \"Purchase IGST\", \"LedgerGroup\": \"$$GroupPurchase\", \"GSTClassification\": \"Not Applicable\", \"IGSTRate\": 18.0, \"Amount\": 23940.0}]}], \"ledgerentries\": [{\"LedgerName\": \"ANAND MOTOR STORE\", \"LedgerAmount\": 532156.0, \"LedgerGroup\": \"$$GroupSundryCreditors\", \"IsDeemedPositive\": \"No\", \"IsPartyLedger\": \"Yes\", \"IGSTRate\": \"\", \"HSNCode\": \"\", \"Cess_Rate\": \"\"}, {\"LedgerName\": \"CGST\", \"LedgerAmount\": 40588.2, \"LedgerGroup\": \"$$GroupDuties\", \"IsDeemedPositive\": \"Yes\", \"IsPartyLedger\": \"No\", \"IGSTRate\": \"\", \"HSNCode\": \"\", \"Cess_Rate\": \"\"}, {\"LedgerName\": \"SGST\", \"LedgerAmount\": 40588.2, \"LedgerGroup\": \"$$GroupDuties\", \"IsDeemedPositive\": \"Yes\", \"IsPartyLedger\": \"No\", \"IGSTRate\": \"\", \"HSNCode\": \"\", \"Cess_Rate\": \"\"}, {\"LedgerName\": \"Round Off\", \"LedgerAmount\": \"-0.4\", \"LedgerGroup\": \"$$GroupIndirectExpenses\", \"IsDeemedPositive\": \"Yes\", \"IsPartyLedger\": \"No\", \"IGSTRate\": \"\", \"HSNCode\": \"\", \"Cess_Rate\": \"\"}], \"has_unknown_additional_charge\": false}",
+            "has_media": true,
+            "id": 92344,
+            "name": "PurchaseInvoice",
+            "status": "Completed",
+            "template": "PurchaseInvoice",
+            "time": "13:28:54.222173",
+            "url": "s3://clevrscan/users/297/Document_4_page_24.png"
+        },
+    ],
+    "pagination": {
+        "current_page": 1,
+        "has_next": true,
+        "has_prev": false,
+        "next_page": 2,
+        "per_page": 15,
+        "prev_page": null,
+        "total_documents": 184,
+        "total_pages": 13
+    }
+}
+```
+</ResponseExample>

@@ -1,0 +1,49 @@
+---
+title: "Delete Document History"
+api: "DELETE https://api.clevrscan.com/api/document_history/{documentId}"
+description: "Deletes a specific document entry from the document history."
+authMethod: key
+---
+
+### Request Format
+
+```http
+DELETE /api/document_history/{documentId}
+x-api-key: <api_key>
+```
+
+### Path Parameters
+
+| Parameter  | Type   | Required | Description                                       |
+| ---------- | ------ | -------- | ------------------------------------------------- |
+| documentId | Number | Yes      | Unique ID of the document history entry to delete |
+
+
+<RequestExample>
+```bash cURL
+curl 'https://api.clevrscan.com/api/document_history/92343' \
+  -X 'DELETE' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en-US,en;q=0.9,hi;q=0.8' \
+  -H 'x-api-key: <api_key>' \
+  -H 'Connection: keep-alive' \
+  -H 'Origin: https://dashboard.clevrscan.com' \
+  -H 'Referer: https://dashboard.clevrscan.com/' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"'
+  ```
+</RequestExample>
+
+<ResponseExample>
+```json Sample Response
+{
+  "deleted_id": 92343,
+  "message": "Document deleted successfully"
+}
+```
+</ResponseExample>

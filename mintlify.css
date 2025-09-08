@@ -4,4 +4,10 @@ img.nav-logo {
     max-height: 50px !important;
     width: auto !important;
   }
+
+  /* Increase size of sidebar title (e.g., "API documentation") */
+#sidebar-title {
+  font-size: 1.15rem !important;  /* adjust as needed */
+  font-weight: 700;              /* makes it bold */
+}
   

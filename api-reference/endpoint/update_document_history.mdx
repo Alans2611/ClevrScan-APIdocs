@@ -1,0 +1,71 @@
+---
+title: "Update Document History"
+api: "PUT https://api.clevrscan.com/api/document_history/{documentId}"
+description: "Updates metadata or AI-extracted results for a specific document in the history."
+authMethod: key
+---
+
+### Request Format
+
+**JSON Body**
+
+```http
+PUT /api/document_history/{documentId}
+Content-Type: application/json
+x-api-key: <api_key>
+
+{
+  "gpt_result": {
+    "sync": false,
+    "company_id": "72",
+    "MasterID": "72_07AAAFC4619B2ZO_CC/06733/25-26_26-06-2025",
+    ...
+  }
+}
+```
+
+### Path Parameters
+
+| Parameter  | Type   | Required | Description                         |
+| ---------- | ------ | -------- | ----------------------------------- |
+| documentId | Number | Yes      | Unique ID of the document to update |
+
+
+### Body Parameters
+
+| Parameter   | Type   | Required | Description                                       |
+| ----------- | ------ | -------- | ------------------------------------------------- |
+| gpt\_result | Object | Yes      | Object containing updated AI results or metadata  |
+
+
+<RequestExample>
+```bash cURL
+curl 'https://api.clevrscan.com/api/document_history/92343' \
+  -X 'PUT' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en-US,en;q=0.9,hi;q=0.8' \
+  -H 'x-api-key: <api_key>' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json' \
+  -H 'Origin: https://dashboard.clevrscan.com' \
+  -H 'Referer: https://dashboard.clevrscan.com/' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw '{"gpt_result":{"sync":false,"company_id":"72","MasterID":"72_07AAAFC4619B2ZO_CC/06733/25-26_26-06-2025","Action":"Create","VoucherNumber":"CC / 06733 / 25-26","VoucherDate":"20250626","Reference":"CC / 06733 / 25-26","ReferenceDate":"20250626","PartyName":"E Chand Company","VoucherType":"Purchase","DeliveryNoteNo":"","Voucher_Total":20640,"DeliveryNoteDate":"","DispatchDocNo":"","DispatchThrough":"BY HAND","Destination":"","CarrierName":"BY HAND","LRNo":"","LRDate":"","MotorVehicleNo":"7703958865","OrderNo":"","OrderDate":"","TermsOfPayment":"","OtherReferences":"","TermsOfDelivery":"","PlaceOfSupply":"Delhi","IsInvoice":"Yes","IsDeleted":"No","BuyerName":"E Chand Company","BuyerAlias":"","BuyerGSTIN":"07AAAFC4619B2ZO","BuyerPinCode":"","BuyerState":"Delhi","BuyerCountryName":"India","BuyerGSTRegistrationType":"Regular","BuyerEmail":"info@chandcompany.com","BuyerMobile":"23213236, 23218581, 23216796, 23213420","BuyerTallyGroup":"$$GroupSundryCreditors","ConsigneeName":"","ConsigneeGSTIN":"07AAFCG3149J1ZI","ConsigneeTallyGroup":"$$GroupSundryCreditors","ConsigneePinCode":"","ConsigneeState":"Delhi","ConsigneeCountryName":"India","EWayBillDetails":[{"EWayBillNo":null,"EWayBillDate":"","Distance":null,"TransporterName":"BY HAND","TransporterID":null,"DocNo":"MR VIVEK / 26-06-2025","DocDate":"26-06-2025","VehicleNo":"7703958865","VehicleType":""}],"EInvoiceDetails":[{"AckNo":"172517776958296","AckDate":"20250626","IRN":"3438651bb8093f564d21839cee6ac04ed3cc8d987aa50f3f347fdcff88a083fb","BillToPlace":"","ShipToPlace":""}],"VoucherCostCentre":"","ConsigneeGSTRegistrationType":"Regular","Narration":"","BuyerAddress":[{"BuyerAddress":"4772, Hauz Qazi, Delhi-110006"}],"ConsigneeAddress":[{"ConsigneeAddress":"A - 81 , GROUND FLOOR , G.T. KARNAL ROAD INDUSTRIAL AREA , North West Delhi Delhi , 110033"}],"InventoryEntries":[{"StockItemName":"CLAMP 6298-1 INSIZE","ItemCode":"","GroupName":"","HSNCode":"90319000","Unit":"PCS.","IGSTRate":18,"CessRate":0,"IsDeemedPositive":"Yes","ActualQty":1,"BilledQty":1,"Rate":219.18,"DiscountPercent":0,"Amount":219.18,"SalesLedger":"Purchase IGST","GodownName":"Main Location","BatchName":"","MRP":281,"BatchAllocations":[{"BatchName":"Primary Batch","ExpiryDate":"","GodownName":"Main Location","ActualQty":1,"BilledQty":1,"Rate":219.18,"DiscountPercent":0,"Amount":219.18}],"AccountingAllocations":[{"LedgerName":"Purchase IGST","LedgerGroup":"$$GroupPurchase","GSTClassification":"Not Applicable","IGSTRate":18,"Amount":219.18}]},{"StockItemName":"DIAL TEST INDICATOR HOLDER 6293-1 INSIZE","ItemCode":"","GroupName":"","HSNCode":"90319000","Unit":"PCS.","IGSTRate":18,"CessRate":0,"IsDeemedPositive":"Yes","ActualQty":1,"BilledQty":1,"Rate":591.24,"DiscountPercent":0,"Amount":591.24,"SalesLedger":"Purchase IGST","GodownName":"Main Location","BatchName":"","MRP":758,"BatchAllocations":[{"BatchName":"Primary Batch","ExpiryDate":"","GodownName":"Main Location","ActualQty":1,"BilledQty":1,"Rate":591.24,"DiscountPercent":0,"Amount":591.24}],"AccountingAllocations":[{"LedgerName":"Purchase IGST","LedgerGroup":"$$GroupPurchase","GSTClassification":"Not Applicable","IGSTRate":18,"Amount":591.24}]},{"StockItemName":"DIGITAL INSIDE MICROMETER 3520-30 INSIZE","ItemCode":"","GroupName":"","HSNCode":"90173010","Unit":"PCS.","IGSTRate":18,"CessRate":0,"IsDeemedPositive":"Yes","ActualQty":1,"BilledQty":1,"Rate":10542.48,"DiscountPercent":0,"Amount":10542.48,"SalesLedger":"Purchase IGST","GodownName":"Main Location","BatchName":"","MRP":13516,"BatchAllocations":[{"BatchName":"Primary Batch","ExpiryDate":"","GodownName":"Main Location","ActualQty":1,"BilledQty":1,"Rate":10542.48,"DiscountPercent":0,"Amount":10542.48}],"AccountingAllocations":[{"LedgerName":"Purchase IGST","LedgerGroup":"$$GroupPurchase","GSTClassification":"Not Applicable","IGSTRate":18,"Amount":10542.48}]},{"StockItemName":"MITUTOYO DIAL TEST 513-401A 0.001MM","ItemCode":"","GroupName":"","HSNCode":"90318000","Unit":"PCS.","IGSTRate":18,"CessRate":0,"IsDeemedPositive":"Yes","ActualQty":1,"BilledQty":1,"Rate":5900,"DiscountPercent":0,"Amount":5900,"SalesLedger":"Purchase IGST","GodownName":"Main Location","BatchName":"","MRP":5900,"BatchAllocations":[{"BatchName":"Primary Batch","ExpiryDate":"","GodownName":"Main Location","ActualQty":1,"BilledQty":1,"Rate":5900,"DiscountPercent":0,"Amount":5900}],"AccountingAllocations":[{"LedgerName":"Purchase IGST","LedgerGroup":"$$GroupPurchase","GSTClassification":"Not Applicable","IGSTRate":18,"Amount":5900}]},{"StockItemName":"JKHSS DRILL 8MM","ItemCode":"","GroupName":"","HSNCode":"82079090","Unit":"PCS.","IGSTRate":18,"CessRate":0,"IsDeemedPositive":"Yes","ActualQty":1,"BilledQty":1,"Rate":238.68,"DiscountPercent":0,"Amount":238.68,"SalesLedger":"Purchase IGST","GodownName":"Main Location","BatchName":"","MRP":238.68,"BatchAllocations":[{"BatchName":"Primary Batch","ExpiryDate":"","GodownName":"Main Location","ActualQty":1,"BilledQty":1,"Rate":238.68,"DiscountPercent":0,"Amount":238.68}],"AccountingAllocations":[{"LedgerName":"Purchase IGST","LedgerGroup":"$$GroupPurchase","GSTClassification":"Not Applicable","IGSTRate":18,"Amount":238.68}]}],"ledgerentries":[{"LedgerName":"E Chand Company","LedgerAmount":20640,"LedgerGroup":"$$GroupSundryCreditors","IsDeemedPositive":"No","IsPartyLedger":"Yes","IGSTRate":"","HSNCode":"","Cess_Rate":""},{"LedgerName":"CGST","LedgerAmount":1574.24,"LedgerGroup":"$$GroupDuties","IsDeemedPositive":"Yes","IsPartyLedger":"No","IGSTRate":"","HSNCode":"","Cess_Rate":""},{"LedgerName":"SGST","LedgerAmount":1574.24,"LedgerGroup":"$$GroupDuties","IsDeemedPositive":"Yes","IsPartyLedger":"No","IGSTRate":"","HSNCode":"","Cess_Rate":""},{"LedgerName":"Round Off","LedgerAmount":"-0.06","LedgerGroup":"$$GroupIndirectExpenses","IsDeemedPositive":"Yes","IsPartyLedger":"No","IGSTRate":"","HSNCode":"","Cess_Rate":""}],"has_unknown_additional_charge":false}}'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Sample Response
+{
+  "document_id": 92343,
+  "message": "Document updated successfully",
+  "updated_at": "2025-09-09T00:28:13.311518+05:30"
+}
+```
+</ResponseExample>

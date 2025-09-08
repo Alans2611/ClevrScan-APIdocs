@@ -1,0 +1,22 @@
+---
+title: "Get Document History (Search)"
+api: "GET https://api.clevrscan.com/api/document_history"
+description: "Fetches paginated document history with optional search filtering."
+authMethod: key
+---
+
+### Request Format
+
+```http
+GET /api/document_history?page=1&limit=15&search=Assam
+x-api-key: <api_key>
+```
+
+### Parameters
+
+| Parameter | Type   | Required | Description                                    |
+| --------- | ------ | -------- | ---------------------------------------------- |
+| page      | Number | No       | Page number (default: `1`)                     |
+| limit     | Number | No       | Number of records per page (default: `15`)     |
+| search    | String | No       | Search term to filter document history results |
+

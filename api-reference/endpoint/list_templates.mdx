@@ -1,0 +1,202 @@
+---
+title: "List Templates"
+api: "GET https://api.clevrscan.com/api/templates"
+description: "Fetches all available OCR templates for the authenticated user."
+authMethod: key
+---
+
+### Request Format
+
+```http
+GET /api/templates
+x-api-key: <api_key>
+Accept: application/json
+```  
+
+### Parameters
+
+| Parameter | Type   | Required | Location | Description                  |
+| --------- | ------ | -------- | -------- | ---------------------------- |
+| api\_key  | String | Yes      | Header   |           API key token |
+
+
+<RequestExample>
+```bash cURL
+curl 'https://api.clevrscan.com/api/templates' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en-US,en;q=0.9,hi;q=0.8' \
+  -H 'x-api-key: <api_key>' \
+  -H 'Connection: keep-alive' \
+  -H 'Origin: https://dashboard.clevrscan.com' \
+  -H 'Referer: https://dashboard.clevrscan.com/' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"'
+  ```
+  </RequestExample>
+
+<ResponseExample>
+```json Sample Response
+  {
+    "description": "Invoice",
+    "fields": [
+      "invoice_issuer_name",
+      "invoice_number",
+      "invoice_date",
+      "payment_status",
+      "payment_reference",
+      "seller_name",
+      "seller_vat_id_payment_details",
+      "seller_address",
+      "seller_vat_id_address_details",
+      "customer_support_website",
+      "billing_name",
+      "billing_address",
+      "delivery_name",
+      "delivery_address",
+      "order_date",
+      "order_number",
+      "line_item_description",
+      "line_item_quantity",
+      "line_item_unit_price_excl_vat",
+      "line_item_vat_rate",
+      "line_item_unit_price_incl_vat",
+      "line_item_subtotal_incl_vat",
+      "line_item_asin",
+      "shipping_charges",
+      "invoice_vat_summary_rate",
+      "invoice_vat_summary_subtotal_excl_vat",
+      "invoice_vat_summary_vat_amount",
+      "total_amount",
+      "currency"
+    ],
+    "id": 342,
+    "instructions": "",
+    "name": "amazon_template",
+    "user_id": 297
+  },
+  {
+    "description": "purchase invoice",
+    "fields": [
+      "date",
+      "products",
+      "packet_and_forwarding_charges",
+      "invoice_no",
+      "quantity",
+      "name",
+      "unit",
+      "rate",
+      "lr_no",
+      "lr_date",
+      "Ack_no",
+      "Ack_date",
+      "irn",
+      "shipping_destination",
+      "transporter_name",
+      "transporter_id",
+      "doc_no",
+      "doc_date",
+      "vehicle_no",
+      "vehicle_date",
+      "distance",
+      "eway_bill_no",
+      "igst",
+      "cgst",
+      "sgst",
+      "rounded_off",
+      "total_amount",
+      "product_details",
+      "taxable_value",
+      "pincode",
+      "mrp",
+      "order_no",
+      "seller_gstin",
+      "buyer_gstin",
+      "buyer_address",
+      "buyer_email",
+      "buyer_mobile",
+      "seller_address",
+      "seller_email",
+      "seller_mobile",
+      "mfg",
+      "hsn_code",
+      "cess_rate",
+      "discount_percentage",
+      "discount_amount",
+      "batch_number",
+      "exp",
+      "tax_rate",
+      "additional_charges",
+      "currency"
+    ],
+    "id": 171,
+    "instructions": "- products fields should be an array containing 'product_details', 'hsn_code', 'quantity', 'rate', 'mrp', 'mfg, 'unit', 'tax_rate', 'cess_rate', 'batch_number', 'exp' and 'amount'. If any column is not present in the products table, please keep it null. 'amount' should always be taxable amount (excluding GST)\n\n-  date should always be in DD-MM-YYYY format.\n\n- 'order_no' is either purchase order number, buyer's order number. If none is present, keep this field null.\n\n- name field should always be <company name at the heading of bill> or seller company name, it shouldn't have any suffix or prefix. For example, it can't be \"<company name> Bill\" . it strictly has to be only <company name>.\n\n- 'buyer_name is the Buyer's company name or the consignee company's name.\n\n- To determine which is the supplier/seller company and which is the buyer company, try recognising the signature or the name at the end of the bill, that will always be the seller company name. Or company at the heading of the bill, or the first box of the bill will have seller company details. Next box might be buyer company's details. \n\n  \"transporter_name\",\n  \"transporter_id\",\n  \"doc_no\",\n  \"doc_date\",\n  \"vehicle_no\",\n  \"distance\", are all under transportation details. \n\n- additional_charges should be an array containing extra charges not mentioned in the given list of fields. For example, \"additional_charges\": [ {\"insurance\" : 400}, \"freight_charges\": 500, \"TDS\": -300}]. It should never take any value like tax_rate, hsn etc apart amount. IT should never take igst, cgst or sgst charges as additional_charges.\n\n- currency should be a 3 letter ISO 4217 Three Letter Currency Code denotation of the currency being used in the bill. For example, \"inr\", \"usd\", \"aed\", etc.\n\n- Quantity should always be numerical and unit should be separated from quantity. For example - quantity: 325.5 Kgs, then quantity: 325.5 and unit: Kgs. Sometimes unit will be mentioned as separate column. Also price should be a float value, price should never be in the format: {price} per {unit}, we only need numerical values. - If any information is missing or unclear, use \\\"\\\" as the value. - do not do any mathematical calculations, just extract the information. - Ensure that the 'products' array contains an object for each product mentioned in the image(s). Keep summarized_name field as \\\"{company name} Bill\\\". DONT CHANGE THE user_id, it should be 1 always. PLEASE DO NOT WRITE ANYTHING ELSE APART FROM THE JSON OBJECT Please provide the extracted information in the JSON format specified above BUT DON'T PROVIDE JSON CODE, I WANT JSON TEXT. IF the text seems invalid to the required JSON, output: {\\\"error\\\":\\\"<error message>\\\"",
+    "name": "PurchaseInvoice",
+    "user_id": 297
+  },
+  {
+    "description": "sales invoice",
+    "fields": [
+      "date",
+      "products",
+      "packet_and_forwarding_charges",
+      "invoice_no",
+      "quantity",
+      "name",
+      "unit",
+      "rate",
+      "lr_no",
+      "lr_date",
+      "Ack_no",
+      "Ack_date",
+      "irn",
+      "shipping_destination",
+      "transporter_name",
+      "transporter_id",
+      "doc_no",
+      "doc_date",
+      "vehicle_no",
+      "vehicle_date",
+      "distance",
+      "eway_bill_no",
+      "igst",
+      "cgst",
+      "sgst",
+      "rounded_off",
+      "total_amount",
+      "product_details",
+      "taxable_value",
+      "pincode",
+      "mrp",
+      "order_no",
+      "seller_gstin",
+      "buyer_gstin",
+      "buyer_address",
+      "buyer_email",
+      "buyer_mobile",
+      "seller_address",
+      "seller_email",
+      "seller_mobile",
+      "mfg",
+      "hsn_code",
+      "cess_rate",
+      "discount_percentage",
+      "discount_amount",
+      "batch_number",
+      "exp",
+      "tax_rate",
+      "additional_charges",
+      "buyer_name",
+      "currency"
+    ],
+    "id": 204,
+    "instructions": "- products fields should be an array containing 'product_details', 'hsn_code', 'quantity', 'rate', 'mrp', 'mfg, 'unit', 'tax_rate', 'cess_rate', 'batch_number', 'exp' and 'amount'. If any column is not present in the products table, please keep it null. \n'amount' should always be taxable amount (excluding GST)\n\n-  date should always be in DD-MM-YYYY format.\n\n- 'order_no' is either purchase order number, buyer's order number. If none is present, keep this field null.\n\n- name field should always be <company name at the heading of bill> or seller company name, it shouldn't have any suffix or prefix. For example, it can't be \"<company name> Bill\" . it strictly has to be only <company name>.\n\n- 'buyer_name' is the Buyer's company name or the consignee company's name.\n\n- currency should be a 3 letter ISO 4217 Three Letter Currency Code denotation of the currency being used in the bill. For example, \"inr\", \"usd\", \"aed\", etc.\n\n- To determine which is the supplier/seller company and which is the buyer company, try recognising the signature or the name at the end of the bill, that will always be the seller company name. Or company at the heading of the bill, or the first box of the bill will have seller company details. Next box might be buyer company's details. \n\n  \"transporter_name\",\n  \"transporter_id\",\n  \"doc_no\",\n  \"doc_date\",\n  \"vehicle_no\",\n  \"distance\", are all under transportation details. \n\n- additional_charges should be an array containing extra charges not mentioned in the given list of fields. For example, \"additional_charges\": [ {\"insurance\" : 400}, \"freight_charges\": 500, \"TDS\": -300}]. IT should never consider igst, cgst or sgst charges as additional_charges.\n\n- Quantity should always be numerical and unit should be separated from quantity. For example - quantity: 325.5 Kgs, then quantity: 325.5 and unit: Kgs. Sometimes unit will be mentioned as separate column. Also price should be a float value, price should never be in the format: {price} per {unit}, we only need numerical values. - If any information is missing or unclear, use \\\"\\\" as the value. - do not do any mathematical calculations, just extract the information. - Ensure that the 'products' array contains an object for each product mentioned in the image(s). Keep summarized_name field as \\\"{company name} Bill\\\". DONT CHANGE THE user_id, it should be 1 always. PLEASE DO NOT WRITE ANYTHING ELSE APART FROM THE JSON OBJECT Please provide the extracted information in the JSON format specified above BUT DON'T PROVIDE JSON CODE, I WANT JSON TEXT. IF the text seems invalid to the required JSON, output: {\\\"error\\\":\\\"<error message>\\\"",
+    "name": "SalesInvoice",
+    "user_id": 297
+  }
+```
+</ResponseExample>

@@ -2,6 +2,7 @@
 title: "Async Method"
 api: "POST https://api.clevrscan.com/api/upload_ocr"
 description: "Uploads files for asynchronous OCR processing. Returns task IDs that can be used to check processing status."
+authMethod: key
 ---
 
 ### Request Formats
@@ -10,7 +11,7 @@ description: "Uploads files for asynchronous OCR processing. Returns task IDs th
 ```http
 POST /api/upload_ocr
 Content-Type: multipart/form-data
-Authorization: Bearer <jwt_token>
+x-api-key: <api_key>
 
 files: [file1.pdf, file2.jpg, ...]
 template: "invoice"
@@ -33,7 +34,7 @@ splitPdf: "false"
 <RequestExample>
 ```bash cURL
 curl -X POST "https://api.clevrscan.com/api/upload_ocr" \
-  -H "Authorization: Bearer <jwt_token>" \
+  -H "x-api-key: <api_key>" \
   -F "files=@/path/to/file1.pdf" \
   -F "files=@/path/to/file2.jpg" \
   -F "template=Invoice" \

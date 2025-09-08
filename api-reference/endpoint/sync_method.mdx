@@ -2,6 +2,7 @@
 title: "Sync Method"
 api: "POST https://api.clevrscan.com/api/sync/upload_ocr_sync"
 description: "Uploads files for synchronous OCR processing. Returns results immediately (blocking request)."
+authMethod: key
 ---
 
 ### Request Formats
@@ -10,7 +11,7 @@ description: "Uploads files for synchronous OCR processing. Returns results imme
 ```http
 POST /api/sync/upload_ocr_sync
 Content-Type: multipart/form-data
-Authorization: Bearer <jwt_token>
+x-api-key: <api_key>
 
 files: [file1.pdf, file2.jpg, ...]
 template: "invoice"
@@ -33,7 +34,7 @@ batchProcess: "true"
 <RequestExample>
 ```bash cURL
 curl -X POST "https://api.clevrscan.com/api/sync/upload_ocr_sync" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNzU2Mzk3OTA3LCJqdGkiOiJlZWJkZmU1Ni02MTE5LTRhYjUtYWI3My1hNDBiOTBiNDI1NTgiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiNDA0IiwibmJmIjoxNzU2Mzk3OTA3LCJjc3JmIjoiNTcwZTRlY2UtMjQ1MC00M2VkLWEwMWEtZDgxZjA2NmYxOGExIiwiZXhwIjoxNzg3OTMzOTA3fQ.DnTOh9wafiQeY59FOXJMnqmmGOVBQ_DntdpVRjUYk08" \
+  -H "x-api-key: <api_key>" \
   -F "files=@/path/to/file1.pdf" \
   -F "files=@/path/to/file2.jpg" \
   -F "template=Invoice" \

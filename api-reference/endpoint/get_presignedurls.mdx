@@ -1,0 +1,64 @@
+---
+title: "Get Presigned URLs"
+api: "POST https://api.clevrscan.com/api/documents/presigned_urls"
+description: "Generates presigned URLs for one or more documents. These URLs can be used to securely download documents without re-authentication."
+authMethod: key
+---
+
+### Request Format
+
+**JSON Body**
+
+```http
+POST /api/documents/presigned_urls
+Content-Type: application/json
+x-api-key: <api_key>
+
+{
+  "document_ids": [92343]
+}
+```
+
+### Parameters
+
+| Parameter     | Type      | Required | Location | Description                                |
+| ------------- | --------- | -------- | -------- | ------------------------------------------ |
+| document\_ids | Number\[] | Yes      | Body     | Array of document IDs to generate URLs for |
+| api\_key      | String    | Yes      | Header   |  API key                     |
+
+
+<Note>document_ids must be provided as an array, even if only one document ID is requested.</Note>
+
+<RequestExample>
+```bash cURL
+curl 'https://api.clevrscan.com/api/documents/presigned_urls' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en-US,en;q=0.9,hi;q=0.8' \
+  -H 'x-api-key: <api_key>' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json' \
+  -H 'Origin: https://dashboard.clevrscan.com' \
+  -H 'Referer: https://dashboard.clevrscan.com/' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw '{"document_ids":[92343]}'
+  ```
+</RequestExample>
+
+<ResponseExample>
+```json Sample Response
+{
+  "presigned_urls": {
+    "92343": {
+      "expires_in": 3600,
+      "presigned_url": "https://d2zlfym0sm19sj.cloudfront.net/users/297/Document_4_page_19.png"
+    }
+  }
+}
+```
+</ResponseExample>
