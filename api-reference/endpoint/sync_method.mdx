@@ -1,0 +1,92 @@
+---
+title: "Sync Method"
+api: "POST https://api.clevrscan.com/api/sync/upload_ocr_sync"
+description: "Uploads files for synchronous OCR processing. Returns results immediately (blocking request)."
+---
+
+### Request Formats
+**Option 1: Multipart Form Data**
+
+```http
+POST /api/sync/upload_ocr_sync
+Content-Type: multipart/form-data
+Authorization: Bearer <jwt_token>
+
+files: [file1.pdf, file2.jpg, ...]
+template: "invoice"
+batchProcess: "true"
+```
+
+### Parameters
+
+| Parameter    | Type              | Required | Description                                          |
+|--------------|-------------------|----------|------------------------------------------------------|
+| files        | File[]            | Yes*     | Array of files to process (multipart only)           |
+| file_urls    | String[]/Object[] | Yes*     | Array of URLs or URL objects (JSON only)             |
+| template     | String            | Yes      | Template ID or name for processing                   |
+| batchProcess | Boolean           | No       | Enable batch processing (default: false)             |
+| splitPdf     | Boolean           | No       | Split PDF pages for individual processing (default: false) |
+
+<Note> Either files or file_urls is required.</Note>
+
+
+<RequestExample>
+```bash cURL
+curl -X POST "https://api.clevrscan.com/api/sync/upload_ocr_sync" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNzU2Mzk3OTA3LCJqdGkiOiJlZWJkZmU1Ni02MTE5LTRhYjUtYWI3My1hNDBiOTBiNDI1NTgiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiNDA0IiwibmJmIjoxNzU2Mzk3OTA3LCJjc3JmIjoiNTcwZTRlY2UtMjQ1MC00M2VkLWEwMWEtZDgxZjA2NmYxOGExIiwiZXhwIjoxNzg3OTMzOTA3fQ.DnTOh9wafiQeY59FOXJMnqmmGOVBQ_DntdpVRjUYk08" \
+  -F "files=@/path/to/file1.pdf" \
+  -F "files=@/path/to/file2.jpg" \
+  -F "template=Invoice" \
+  -F "batchProcess=true"
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json 200
+{
+  "bill_to_address": "27, DIf City, Gupta\nDelhi, Delhi 40003<99.0>",
+  "bill_to_name": "Kavindra Mannan<99.0>",
+  "currency": "INR<99.0>",
+  "due_date": "26/04/2019<99.0>",
+  "invoice_date": "29/01/2019<99.0>",
+  "invoice_number": "IN-001<99.0>",
+  "line_items": [
+    {
+      "amount": "9999.0<99.0>",
+      "description": "Frontend design restructure<99.0>",
+      "quantity": "1<99.0>",
+      "unit_price": "9999.0<99.0>"
+    },
+    {
+      "amount": "1950.0<99.0>",
+      "description": "Custom icon package<99.0>",
+      "quantity": "2<99.0>",
+      "unit_price": "975.0<99.0>"
+    },
+    {
+      "amount": "297.0<99.0>",
+      "description": "Gandhi mouse pad<99.0>",
+      "quantity": "3<99.0>",
+      "unit_price": "99.0<99.0>"
+    }
+  ],
+  "payment_terms": "Payment is due within 15 days<99.0>",
+  "subtotal": "12246.0<99.0>",
+  "summarized_name": "Saffron Design Invoice<99.0>",
+  "tax_amount": "1469.52<99.0>",
+  "total_amount": "13715.52<99.0>",
+  "user_id": "1<99.0>",
+  "vendor_address": "77 Namrata Bldg\nDelhi, Delhi 400077<99.0>",
+  "vendor_gst_number": "None",
+  "vendor_name": "Saffron Design<99.0>"
+}
+```
+
+```json 400
+{
+  "error": "Invalid request. Please provide a valid file and template."
+}
+```
+
+</ResponseExample>

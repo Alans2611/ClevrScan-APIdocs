@@ -2,6 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "ClevrScan",
+  "styles": "mintlify.css",
   "colors": {
     "primary": "#4285F4",
     "light": "#F5F9FF",
@@ -57,8 +58,11 @@
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Endpoints",
             "pages": [
+              "api-reference/endpoint/async_method",
+              "api-reference/endpoint/status_checking",
+              "api-reference/endpoint/sync_method",
               "api-reference/endpoint/get",
               "api-reference/endpoint/create",
               "api-reference/endpoint/delete",
@@ -90,8 +94,7 @@
   },
   "logo": {
     "light": "/logo/lightmodelogo.svg",
-    "dark": "/logo/darkmodelogo.svg",
-    "height": 54
+    "dark": "/logo/darkmodelogo.svg"
   },
   "navbar": {
     "links": [

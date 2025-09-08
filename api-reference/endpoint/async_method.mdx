@@ -1,0 +1,43 @@
+---
+title: "Async Method"
+api: "POST https://api.clevrscan.com/api/upload_ocr"
+description: "Uploads files for asynchronous OCR processing. Returns task IDs that can be used to check processing status."
+---
+
+### Request Formats
+**Option 1: Multipart Form Data**
+
+```http
+POST /api/upload_ocr
+Content-Type: multipart/form-data
+Authorization: Bearer <jwt_token>
+
+files: [file1.pdf, file2.jpg, ...]
+template: "invoice"
+batchProcess: "true"
+splitPdf: "false"
+
+```
+
+### Parameters
+
+| Name         | Type     | Required | Description                                               |
+|--------------|----------|----------|-----------------------------------------------------------|
+| files        | File[]   | Yes*     | Array of files to process (multipart only)                |
+| template     | String   | Yes      | Template ID or name for processing (e.g. "Invoice")       |
+| batchProcess | Boolean  | No       | Enable batch processing (default: false)                  |
+| splitPdf     | Boolean  | No       | Split PDF pages individually (default: false)             |
+
+
+
+<RequestExample>
+```bash cURL
+curl -X POST "https://api.clevrscan.com/api/upload_ocr" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -F "files=@/path/to/file1.pdf" \
+  -F "files=@/path/to/file2.jpg" \
+  -F "template=Invoice" \
+  -F "batchProcess=true" \
+  -F "splitPdf=false"
+  ```
+</RequestExample> 

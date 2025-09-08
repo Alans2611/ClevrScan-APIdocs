@@ -1,0 +1,7 @@
+/* Override Mintlify/Tailwind logo size */
+img.nav-logo {
+    height: 50px !important;   /* adjust size as needed */
+    max-height: 50px !important;
+    width: auto !important;
+  }
+  
