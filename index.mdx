@@ -4,37 +4,26 @@ description: 'ClevrScan API documentation for integrating document processing an
 ---
 
 <Note>
-  This section provides a complete reference for the ClevrScan API.  
-  If you’re not building or integrating with the API, you may remove the `api-reference` folder.
+  👋 Welcome to the **ClevrScan API**.  
+  This guide is designed to help you integrate ClevrScan seamlessly into your applications and workflows.
 </Note>
 
 ## Welcome
 
-Welcome to the **ClevrScan API documentation** 👋  
+We’re glad you’re here!  
 
-ClevrScan provides powerful APIs to help you **automate and optimize document processing**.  
-You can build integrations, manage templates, analyze data, and connect ClevrScan with your own systems.
+The **ClevrScan API** gives you the tools to **automate and optimize document processing** at scale.  
+From extracting structured data to managing templates and analyzing results, our API is built to make document handling simple, reliable, and developer-friendly.  
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration).  
-For this documentation, we are using the **OpenAPI specification**.
+Whether you’re building a custom integration, powering internal tools, or creating client-facing products, ClevrScan is designed to fit right into your workflow.
 
-<Card
-  title="ClevrScan API Endpoints"
-  icon="file-text"
-  href="https://github.com/clevrscan/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
 
 ## Authentication
 
-All API endpoints require **Bearer Token authentication**.  
-Make sure to include your API key in the `Authorization` header when making requests.
+To keep your requests secure, every API call requires **Bearer Token authentication**.  
+Think of your API key as your personal passport—it identifies you and grants access to ClevrScan’s services.  
+
+Add it to your headers like this:
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+"Authorization": "Bearer <your_api_key>"

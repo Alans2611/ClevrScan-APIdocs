@@ -44,7 +44,7 @@ curl -X POST "https://api.clevrscan.com/api/sync/upload_ocr_sync" \
 
 <ResponseExample>
 
-```json 200
+```json Sample Response
 {
   "bill_to_address": "27, DIf City, Gupta\nDelhi, Delhi 40003<99.0>",
   "bill_to_name": "Kavindra Mannan<99.0>",
@@ -81,12 +81,6 @@ curl -X POST "https://api.clevrscan.com/api/sync/upload_ocr_sync" \
   "vendor_address": "77 Namrata Bldg\nDelhi, Delhi 400077<99.0>",
   "vendor_gst_number": "None",
   "vendor_name": "Saffron Design<99.0>"
-}
-```
-
-```json 400
-{
-  "error": "Invalid request. Please provide a valid file and template."
 }
 ```
 
