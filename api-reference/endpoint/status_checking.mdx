@@ -5,9 +5,65 @@ description: "Check the status of an asynchronous processing task."
 authMethod: key
 ---
 
+### Request Format
+
+```http
+GET /api/status/celery-task-uuid
+Authorization: Bearer <jwt_token>
+
+```
+
 <RequestExample>
 ```bash cURL
 curl -X GET "https://api.clevrscan.com/api/status/<task_id>" \
   -H "x-api-key: <api_key>"
 ```
 </RequestExample>
+
+<ResponseExample>
+```json Sample Response
+{
+  "date": "2025-09-10T16:22:59.577793+05:30",
+  "result": {
+    "company_id": null,
+    "date": "2025-09-10T16:22:59.577793+05:30",
+    "gpt4_analysis": "```json\n{\n    \"user_id\": \"1<99.0>\",\n    \"summarized_name\": \"Saffron Design Invoice<99.0>\",\n    \"invoice_number\": \"IN-001<99.0>\",\n    \"invoice_date\": \"29/01/2019<99.0>\",\n    \"due_date\": \"26/04/2019<99.0>\",\n    \"vendor_name\": \"Saffron Design<99.0>\",\n    \"vendor_address\": \"77 Namrata Bldg\\nDelhi, Delhi 400077<99.0>\",\n    \"vendor_gst_number\": \"None\",\n    \"bill_to_name\": \"Kavindra Mannan<99.0>\",\n    \"bill_to_address\": \"27, DIf City, Gupta\\nDelhi, Delhi 40003<99.0>\",\n    \"subtotal\": \"12246.0<99.0>\",\n    \"tax_amount\": \"1469.52<99.0>\",\n    \"total_amount\": \"13715.52<99.0>\",\n    \"currency\": \"INR<99.0>\",\n    \"payment_terms\": \"Payment is due within 15 days<99.0>\",\n    \"line_items\": [\n        {\n            \"description\": \"Frontend design restructure<99.0>\",\n            \"quantity\": \"1<99.0>\",\n            \"unit_price\": \"9999.0<99.0>\",\n            \"amount\": \"9999.0<99.0>\"\n        },\n        {\n            \"description\": \"Custom icon package<99.0>\",\n            \"quantity\": \"2<99.0>\",\n            \"unit_price\": \"975.0<99.0>\",\n            \"amount\": \"1950.0<99.0>\"\n        },\n        {\n            \"description\": \"Gandhi mouse pad<99.0>\",\n            \"quantity\": \"3<99.0>\",\n            \"unit_price\": \"99.0<99.0>\",\n            \"amount\": \"297.0<99.0>\"\n        }\n    ]\n}\n```",
+    "page_metadata": {
+      "page_number": 1,
+      "s3_url": "https://d2zlfym0sm19sj.cloudfront.net/users/404/invoice_page_1.png",
+      "total_pages": 1
+    },
+    "status": "success",
+    "task_id": "b3aef434-a75c-4015-aa81-550dfd9d8689",
+    "template_id": "Invoice",
+    "type": "Invoice",
+    "usage_stats": {
+      "limits": {
+        "features": [
+          "confidence_score",
+          "review",
+          "integration"
+        ],
+        "max_file_size": 52428800,
+        "max_file_size_mb": 50.0
+      },
+      "month": {
+        "count": 2,
+        "limit": 200,
+        "remaining": 198
+      },
+      "today": {
+        "count": 1,
+        "limit": 50,
+        "remaining": 49
+      }
+    }
+  },
+  "state": "SUCCESS",
+  "status": "success",
+  "task_id": "b3aef434-a75c-4015-aa81-550dfd9d8689",
+  "template_id": "285",
+  "template_name": "Invoice"
+}
+```
+</ResponseExample>

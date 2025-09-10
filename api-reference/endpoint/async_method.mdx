@@ -42,3 +42,16 @@ curl -X POST "https://api.clevrscan.com/api/upload_ocr" \
   -F "splitPdf=false"
   ```
 </RequestExample> 
+
+<ResponseExample>
+```json Sample Response
+{
+  "individual_files": 0,
+  "message": "Batch processing started with PDF grouping",
+  "pdf_groups": 1,
+  "task_ids": [
+    "b3aef434-a75c-4015-aa81-550dfd9d8689"
+  ]
+}
+```
+</ResponseExample>
